@@ -28,10 +28,11 @@
 			<div id="ceremony">Ceremony</div>	
 		</div>
 		<div class="mobile-menu-box">
-			<div class="menu-btn" id="mobile-home">Home</div>
-			<div class="menu-btn" id="mobile-about">About</div>
-			<div class="menu-btn" id="mobile-gallery">Gallery</div>
-			<div class="menu-btn" id="mobile-ceremony">Ceremony</div>	
+			<div id="menu-heading" class="menu-btn" id="mobile-home">Home</div>
+			<div id="home-m" class="menu-btn" id="mobile-home">Home</div>
+			<div id="about-m" class="menu-btn" id="mobile-about">About</div>
+			<div id="gallery-m" class="menu-btn" id="mobile-gallery">Gallery</div>
+			<div id="ceremony-m" class="menu-btn" id="mobile-ceremony">Ceremony</div>	
 			 
 		</div>
 		
@@ -51,9 +52,6 @@
 		</div>
 		<div id="coverflow">
 			<ul class="flip-items">
-				<li data-flip-title="Red">
-					<img src="img/1.jpg">
-				</li>
 				<li data-flip-title="Razzmatazz" data-flip-category="Purples">
 					<img src="img/2.jpg">
 				 </li>
@@ -68,9 +66,6 @@
 				</li>	
 				<li data-flip-title="Razzmatazz" data-flip-category="Purples">
 					<img src="img/6.jpg">
-				 </li>
-				<li data-flip-title="Razzmatazz" data-flip-category="Purples">
-					<img src="img/7.jpg">
 				 </li>				 
 			</ul>
 		</div>
@@ -83,7 +78,7 @@
 		</div>
 		
 		<div id="thanks">Thank You</div>
-		<div id="developer">Designed & Developed by tbaveja</div>
+		<div id="developer">Designed & Developed by <a style="color: #fff; font-weight: 700;" href="http://fb.com/tbaveja" target='_blank'>tbaveja</div>
 		
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="js/jquery.flipster.min.js"></script>
@@ -94,21 +89,22 @@
 			var $aboutTop = $('.about-section').offset().top;
 			var $ceremonyTop = $('.ceremony-section').offset().top;
 			var $galleryTop = $('#coverflow').offset().top;
+			var $headerHeight = $('.mobile-menu-box').outerHeight();
+			console.log ("Header Height: " + $headerHeight);
 			console.log($aboutTop);
 			console.log($ceremonyTop);
 			console.log($galleryTop);
 			
-			$('#about').click(function() {
+			$('#about,#about-m').click(function() {
 				$('html, body').animate({scrollTop: $aboutTop}, 700);
-				//$("html, body").animate({ scrollTop: 0 }, 600);
 			});
-			$('#gallery').click(function() {
+			$('#gallery, #gallery-m').click(function() {
 				$('html, body').animate({scrollTop: $galleryTop}, 700);
 			});
-			$('#ceremony').click(function() {
+			$('#ceremony, #ceremony-m').click(function() {
 				$('html, body').animate({scrollTop: $ceremonyTop}, 700);
 			});
-			$('#home').click(function() {
+			$('#home, #home-m').click(function() {
 				$("html, body").animate({ scrollTop: 0 }, 600);
 			});
 			
@@ -117,13 +113,28 @@
 				$('.groom').toggleClass('hover');
 			}, 2000);
 			
-			$('.mobile-menu-box').click(function() {
-				$('.menu-btn').show();
-			});	
 			$('.menu-btn').click(function() {
-				$('.menu-btn').hide();
-				//$(this).show();
+				$('.menu-btn').toggle();
 			});	
+			
+			
+			$(window).scroll(function() {
+				if($(window).scrollTop() >= $aboutTop - $headerHeight  && $(window).scrollTop() < $galleryTop - $headerHeight) {
+					$('#menu-heading').html('About');
+					console.log('about section');
+				} else if ($(window).scrollTop() < $aboutTop + $headerHeight && $(window).scrollTop() > 0) {
+					$('#menu-heading').html('Home');
+					console.log('home section');
+				} else if ($(window).scrollTop() >= $galleryTop - $headerHeight && $(window).scrollTop() < $ceremonyTop - $headerHeight) {
+					$('#menu-heading').html('Gallery');
+					console.log('gallery section');
+				} else if ($(window).scrollTop() >= $ceremonyTop - $headerHeight) {
+					$('#menu-heading').html('Ceremony');
+					console.log('ceremony section');
+				}
+				
+			});
+			
 			
 	</script>
 	<body>
