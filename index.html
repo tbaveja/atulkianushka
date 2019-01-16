@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Sachin Weds Shruti</title>
+		<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">		
+		<link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
+		<link rel="stylesheet" href="css/jquery.flipster.min.css">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+
+	<body>
+		<div style="width: 100%; height: 100%; background-image: url('bg.jpg'); background-size: cover; background-position: center center; background-attachment: fixed;">
+			<div class="title">Sachin Weds Shruti</div>
+			<div class="date">Sunday 27 Jan 2019, 7PM</div>
+			<div class="date" style="color: #841010; font-weight: 700; font-size: 25px; line-height: 30px;">SHUBHAM GARDEN, MURTHAL</div>
+		</div>
+		<div class="menu-box">
+			<div id="home">Home</div>
+			<div id="about">About</div>
+			<div id="gallery">Gallery</div>
+			<div id="ceremony">Ceremony</div>	
+		</div>
+		<div class="mobile-menu-box">
+			<div class="menu-btn" id="mobile-home">Home</div>
+			<div class="menu-btn" id="mobile-about">About</div>
+			<div class="menu-btn" id="mobile-gallery">Gallery</div>
+			<div class="menu-btn" id="mobile-ceremony">Ceremony</div>	
+			 
+		</div>
+		
+		<div class="about-section">
+			<h1 class="title">Love</h1>
+			<div class="about-content" style="width: 80%; margin: 0 auto;">
+				<div>
+					<div class="bride"></div>
+					<div style="margin-top: 10px; color: #e3004d; font-weight: 600;">Shruti Madan</div>
+				</div>
+				<div><img style="width: 300px; border-radius: 50%; " src="img/about.jpg"></div>
+				<div>
+					<div class="groom"></div>
+					<div style="margin-top: 10px; color:#9635ad; font-weight: 600;">Sachin Katyal</div>
+				</div>
+			</div>
+		</div>
+		<div id="coverflow">
+			<ul class="flip-items">
+				<li data-flip-title="Red">
+					<img src="img/1.jpg">
+				</li>
+				<li data-flip-title="Razzmatazz" data-flip-category="Purples">
+					<img src="img/2.jpg">
+				 </li>
+				<li data-flip-title="Deep Lilac" data-flip-category="Purples">
+					<img src="img/3.jpg">
+				</li>	
+				<li data-flip-title="Razzmatazz" data-flip-category="Purples">
+					<img src="img/4.jpg">
+				 </li>
+				<li data-flip-title="Deep Lilac" data-flip-category="Purples">
+					<img src="img/5.jpg">
+				</li>	
+				<li data-flip-title="Razzmatazz" data-flip-category="Purples">
+					<img src="img/6.jpg">
+				 </li>
+				<li data-flip-title="Razzmatazz" data-flip-category="Purples">
+					<img src="img/7.jpg">
+				 </li>				 
+			</ul>
+		</div>
+		
+		<div class="ceremony-section">
+			<h1 class="title" style="margin-top: 0; padding-top: 50px;">Wedding Day</h1>
+			<div class="container center" style="color: #9635ad;">Your love and blessing have helped us become who we are.</div>
+			<div class="container center" style="color: #e3004d;">Together with our parents, we invite you to share our joy as we exchange vows and celebrate our marriage.</div>
+			<iframe style="width: 100%; height: 400px; margin-top: 30px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3489.2455785098673!2d77.03759161504499!3d29.009718682270613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390db108f430b03b%3A0xcede8f1c2ac0f4f2!2sShubham+Gardens!5e0!3m2!1sen!2sin!4v1547442988126" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
+		
+		<div id="thanks">Thank You</div>
+		<div id="developer">Designed & Developed by tbaveja</div>
+		
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="js/jquery.flipster.min.js"></script>
+	<script>			
+			var coverflow = $("#coverflow").flipster();
+			
+			var body = $('html','body');
+			var $aboutTop = $('.about-section').offset().top;
+			var $ceremonyTop = $('.ceremony-section').offset().top;
+			var $galleryTop = $('#coverflow').offset().top;
+			console.log($aboutTop);
+			console.log($ceremonyTop);
+			console.log($galleryTop);
+			
+			$('#about').click(function() {
+				$('html, body').animate({scrollTop: $aboutTop}, 700);
+				//$("html, body").animate({ scrollTop: 0 }, 600);
+			});
+			$('#gallery').click(function() {
+				$('html, body').animate({scrollTop: $galleryTop}, 700);
+			});
+			$('#ceremony').click(function() {
+				$('html, body').animate({scrollTop: $ceremonyTop}, 700);
+			});
+			$('#home').click(function() {
+				$("html, body").animate({ scrollTop: 0 }, 600);
+			});
+			
+			setInterval(function(){ 
+				$('.bride').toggleClass('hover');
+				$('.groom').toggleClass('hover');
+			}, 2000);
+			
+			$('.mobile-menu-box').click(function() {
+				$('.menu-btn').show();
+			});	
+			$('.menu-btn').click(function() {
+				$('.menu-btn').hide();
+				//$(this).show();
+			});	
+			
+	</script>
+	<body>
+</html>
