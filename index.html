@@ -78,19 +78,17 @@
 			var body = $('html','body');
 			var $aboutTop = $('.about-section').offset().top;
 			var $ceremonyTop = $('.ceremony-section').offset().top;
-			var $galleryTop = $('#coverflow').offset().top;
+			//var $galleryTop = $('#coverflow').offset().top;
 			var $headerHeight = $('.mobile-menu-box').outerHeight();
 			console.log ("Header Height: " + $headerHeight);
 			console.log($aboutTop);
 			console.log($ceremonyTop);
-			console.log($galleryTop);
+			//console.log($galleryTop);
 			
 			$('#about,#about-m').click(function() {
 				$('html, body').animate({scrollTop: $aboutTop}, 700);
 			});
-			$('#gallery, #gallery-m').click(function() {
-				$('html, body').animate({scrollTop: $galleryTop}, 700);
-			});
+			
 			$('#ceremony, #ceremony-m').click(function() {
 				$('html, body').animate({scrollTop: $ceremonyTop}, 700);
 			});
@@ -108,7 +106,7 @@
 			});	
 			
 			
-			$(window).scroll(function() {
+			/*$(window).scroll(function() {
 				if($(window).scrollTop() >= $aboutTop - $headerHeight  && $(window).scrollTop() < $galleryTop - $headerHeight) {
 					$('#menu-heading').html('About');
 					console.log('about section');
@@ -123,7 +121,7 @@
 					console.log('ceremony section');
 				}
 				
-			});
+			});*/
 			
 			
 	</script>
